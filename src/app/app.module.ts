@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdProgressBarModule } from '@angular/material';
+import { MaterialModule, MdProgressBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TagModule } from './admin/tag/tag.module';
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     MdProgressBarModule,
     BrowserAnimationsModule,
+    MaterialModule,
     TagModule,
 /*     PostModule,
     CommentModule */

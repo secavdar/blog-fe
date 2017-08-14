@@ -1,0 +1,15 @@
+<div class="component-container">
+  <div class="form-viewer-wrapper">
+    <div class="form-viewer-title">
+      <div class="form-viewer-title-spacer">Etiket Düzenle</div>
+    </div>
+    <div fxLayout="row" fxLayoutWrap fxLayoutGap="60px" class="form-viewer-body">
+      <md-input-container>
+        <input mdInput placeholder="Etiket Adı" [(ngModel)]="vm.name" />
+      </md-input-container>
+    </div>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end center" class="form-viewer-body">
+      <button type="button" md-raised-button (click)="dialogRef.close(vm)" color="primary">Kaydet</button>
+    </div>
+  </div>
+</div>

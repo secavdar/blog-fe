@@ -1,0 +1,16 @@
+<button md-raised-button (click)="addTag()">Yeni Etiket Ekle</button>
+
+<table class="mat-table" *ngIf="!!vm.length">
+  <thead>
+    <tr class="mat-header-row">
+      <th class="mat-header-cell">Tag Adı</th>
+      <th class="mat-header-cell"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of vm" class="mat-row">
+      <td class="mat-cell">{{ i.name }}</td>
+      <td class="mat-cell"><button md-raised-button (click)="deleteTag(i)">Sil</button></td>
+    </tr>
+  </tbody>
+</table>

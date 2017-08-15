@@ -21,8 +21,8 @@ export class TagService {
     });
   }
 
-  public delete(id: number): Observable<boolean> {
-    return this.http.delete('Tags/' + id.toString()).map((response: Response) => {
+  public changeState(id: number): Observable<boolean> {
+    return this.http.put('Tags/State/' + id.toString(), null).map((response: Response) => {
       return response.json();
     });
   }

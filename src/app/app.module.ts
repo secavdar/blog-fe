@@ -42,8 +42,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     TagModule,
-/*     PostModule,
-    CommentModule */
+    PostModule,
+ /*    CommentModule */
   ],
   providers: [
     DataService,

@@ -16,19 +16,34 @@ export class TagComponent implements OnInit {
     private dialogService: DialogService) { }
 
   ngOnInit() {
+    this.list();
   }
 
-  deleteTag(i: Tag) {
+  list() {
     this.dataService
       .tag
-      .delete(i.id)
-      .subscribe(data => console.log(data));
+      .getFullList()
+      .subscribe(data => this.vm = data);
   }
 
-  addTag() {
+  changeState(i: Tag) {
+    this.dataService
+      .tag
+      .changeState(i.id)
+      .subscribe(data => this.list());
+  }
+
+  create() {
     this.dialogService
-      .addTag()
-      .map(data => this.dataService.tag.save(data))
-      .subscribe(data => console.log(data));
+      .tagDialog()
+      .flatMap(data => this.dataService.tag.save(data))
+      .subscribe(data => this.list());
+  }
+
+  edit(i: Tag) {
+    this.dialogService
+      .tagDialog(i)
+      .flatMap(data => this.dataService.tag.save(data))
+      .subscribe(data => this.list());
   }
 }

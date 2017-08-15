@@ -10,7 +10,7 @@ import { Tag } from '../../../shared/models';
 })
 export class TagDetailComponent implements OnInit {
 
-  private vm: Tag = new Tag();
+  public vm: Tag = new Tag();
 
   constructor(private dialogRef: MdDialogRef<TagDetailComponent>) { }
 

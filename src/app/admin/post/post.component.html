@@ -1,3 +1,36 @@
-<p>
-  post works!
-</p>
+<div class="component-container">
+    <div class="form-viewer-wrapper">
+      <div class="form-viewer-title">
+        <div class="form-viewer-title-spacer">Gönderiler</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end center" class="form-viewer-body">
+        <button type="button" md-raised-button (click)="create()" color="primary">Yeni</button>
+      </div>
+      <div fxLayout="row" fxLayoutWrap fxLayoutGap="60px" class="form-viewer-body">
+        <table class="mat-table" *ngIf="!!vm.length">
+          <thead>
+            <tr class="mat-header-row">
+              <th class="mat-header-cell">Başlık</th>
+              <th class="mat-header-cell">Oluşturma Tarihi</th>
+              <th class="mat-header-cell">Toplam Gösterim</th>
+              <th class="mat-header-cell">Aktif Mi?</th>
+              <th class="mat-header-cell"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of vm" class="mat-row">
+              <td class="mat-cell">{{ i.title }}</td>
+              <td clasS="mat-cell">{{ i.createDate | date: 'dd.MM.yyyy HH:mm:ss' }}</td>
+              <td class="mat-cell">{{ i.showCounter }}</td>
+              <td class="mat-cell">{{ i.isActive }}</td>
+              <td class="mat-cell">
+                <button md-raised-button (click)="edit(i)">Düzenle</button>
+                <button md-raised-button (click)="changeState(i)" color="primary" *ngIf="!i.isActive">Aktif</button>
+                <button md-raised-button (click)="changeState(i)" color="warn" *ngIf="!!i.isActive">Pasif</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

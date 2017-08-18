@@ -25,9 +25,12 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angular-froala-wysiwyg": "^1.0.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "material": "^0.1.1",
+    "popper": "^1.0.0",
     "rxjs": "^5.4.1",
+    "startbootstrap-blog-home": "^4.0.0-alpha",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

@@ -12,13 +12,13 @@ import { MdSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
 
 import { environment } from '../../../environments/environment';
-import { ToastrService, LoaderService } from './'
+import { ToastrService } from './'
 
 @Injectable()
 export class HttpInterceptorService extends Http {
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions,
-              private toastr: ToastrService, private loaderService: LoaderService) {
+              private toastr: ToastrService) {
     super(backend, defaultOptions);
   }
 
@@ -42,39 +42,23 @@ export class HttpInterceptorService extends Http {
   }
 
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    this.showLoader();
     url = this.updateUrl(url);
-    return super.get(url, this.getRequestOptionArgs(options)).timeout(5000).finally(() => this.onEnd())
+    return super.get(url, this.getRequestOptionArgs(options)).timeout(5000);
   }
 
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    this.showLoader();
     url = this.updateUrl(url);
-    return super.post(url, body, this.getRequestOptionArgs(options)).finally(() => this.onEnd());
+    return super.post(url, body, this.getRequestOptionArgs(options));
   }
 
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
-    this.showLoader();
     url = this.updateUrl(url);
-    return super.put(url, body, this.getRequestOptionArgs(options)).finally(() => this.onEnd());
+    return super.put(url, body, this.getRequestOptionArgs(options));
   }
 
   delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    this.showLoader();
     url = this.updateUrl(url);
-    return super.delete(url, this.getRequestOptionArgs(options)).finally(() => this.onEnd());
-  }
-
-  private onEnd(): void {
-    this.hideLoader();
-  }
-
-  private showLoader(): void {
-    this.loaderService.displayLoader(true)
-  }
-
-  private hideLoader(): void {
-    this.loaderService.displayLoader(false);
+    return super.delete(url, this.getRequestOptionArgs(options));
   }
 
   private updateUrl(req: string) {
@@ -89,7 +73,6 @@ export class HttpInterceptorService extends Http {
       options.headers = new Headers();
       options.headers.append('Content-Type', 'application/json');
     }
-    options.withCredentials = true;
 
     return options;
   }

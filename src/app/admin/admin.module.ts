@@ -1,52 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule, MdProgressBarModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AdminModule } from './admin/admin.module';
-import { HomeModule } from './home/home.module';
+import { AdminRoutingModule } from './admin-routing.module';
+import { PostModule } from './post/post.module';
+import { TagModule } from './tag/tag.module';
+import { AdminComponent } from './admin.component';
 
-import { AppComponent } from './app.component';
-import { HttpService } from './http.service';
+import { HttpService } from '../http.service';
 
-import { DataService, HttpInterceptorService, ToastrService } from './shared/services';
-
-const appRoutes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'AppComponent',
-  }
-];
+import { DataService, HttpInterceptorService, ToastrService, DialogService } from '../shared/services';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AdminComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    AdminRoutingModule,
     HttpModule,
     FlexLayoutModule,
     MdProgressBarModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AdminModule,
-    HomeModule
+    PostModule,
+    TagModule
   ],
   providers: [
     DataService,
     HttpInterceptorService,
     ToastrService,
+    DialogService,
     {
       provide: Http,
       useFactory: HttpService,
       deps: [XHRBackend, RequestOptions, ToastrService],
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AdminComponent]
 })
-export class AppModule { }
+export class AdminModule { }

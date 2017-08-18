@@ -42,8 +42,6 @@ export class DialogService {
                     });
                 }
 
-                console.log(data);
-
                 dialogRef.componentInstance.tags = data
             });
 

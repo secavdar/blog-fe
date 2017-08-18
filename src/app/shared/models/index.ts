@@ -3,3 +3,4 @@ export * from './common-list.model';
 export * from './tag.model';
 export * from './post.model';
 export * from './item-change-state.enum';
+export * from './menu-link.model';

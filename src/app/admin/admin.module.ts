@@ -1,16 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
-import { MaterialModule, MdProgressBarModule } from '@angular/material';
+import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AdminRoutingModule } from './admin-routing.module';
+import { AdminComponent } from './admin.component';
 import { PostModule } from './post/post.module';
 import { TagModule } from './tag/tag.module';
-import { AdminComponent } from './admin.component';
+import { CommentModule } from './comment/comment.module';
 
-import { HttpService } from '../http.service';
+import { HttpService } from './http.service';
 
 import { DataService, HttpInterceptorService, ToastrService, DialogService } from '../shared/services';
 
@@ -19,15 +19,14 @@ import { DataService, HttpInterceptorService, ToastrService, DialogService } fro
     AdminComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     AdminRoutingModule,
     HttpModule,
     FlexLayoutModule,
-    MdProgressBarModule,
-    BrowserAnimationsModule,
     MaterialModule,
     PostModule,
-    TagModule
+    TagModule,
+    CommentModule
   ],
   providers: [
     DataService,
@@ -39,7 +38,6 @@ import { DataService, HttpInterceptorService, ToastrService, DialogService } fro
       useFactory: HttpService,
       deps: [XHRBackend, RequestOptions, ToastrService],
     },
-  ],
-  bootstrap: [AdminComponent]
+  ]
 })
 export class AdminModule { }

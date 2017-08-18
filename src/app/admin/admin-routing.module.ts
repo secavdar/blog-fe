@@ -8,21 +8,21 @@ import { CommentComponent } from './comment/comment.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     children: [
       {
-        path: 'post',
+        path: '',
         component: PostComponent
       },
       {
         path: 'tag',
         component: TagComponent
       },
-/*       {
+      {
         path: 'comment',
         component: CommentComponent
-      } */
+      }
     ]
   }
 ];

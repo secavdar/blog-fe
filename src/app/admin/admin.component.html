@@ -4,8 +4,8 @@
       <md-toolbar>Menu</md-toolbar>
       <md-nav-list>
         <md-list-item *ngFor="let l of menuLinks">
-          <md-icon md-list-icon color="primary">home</md-icon>
-          <a md-line routerLink="{{l.routerLink}}">{{ l.name }}</a>
+          <md-icon md-list-icon color="primary">{{ l.icon }}</md-icon>
+          <a md-line [routerLink]="l.routerLink">{{ l.name }}</a>
         </md-list-item>
       </md-nav-list>
     </md-sidenav>

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CommentComponent } from './comment.component';
+import { AboutComponent } from './about.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    CommentComponent
+    AboutComponent
   ]
 })
-export class CommentModule { }
+export class AboutModule { }

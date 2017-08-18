@@ -18,7 +18,7 @@ import { ToastrService } from './'
 export class HttpInterceptorService extends Http {
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions,
-              private toastr: ToastrService) {
+    private toastr?: ToastrService) {
     super(backend, defaultOptions);
   }
 
@@ -32,8 +32,10 @@ export class HttpInterceptorService extends Http {
   catchErrors() {
     return (res: Response) => {
       if (res.status === 400 || res.status === 401 || res.status === 500) {
-         this.toastr.showToaster(res.statusText);
-         return Observable.throw(res);
+        if (this.toastr != null) {
+          this.toastr.showToaster(res.statusText);
+        }
+        return Observable.throw(res);
       }
 
       console.error('An error occured', res);
